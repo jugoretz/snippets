@@ -26,11 +26,6 @@
        {% if not user.wants_email %}checked{% endif %}> no
 </p>
 
-<p><b>Email addresses of people to view snippets of</b>
-(regexp, one per line, "all" for everybody):<br>
-(TODO(csilvers): this field is currently ignored)<br>
-<textarea name="to_view" rows="20" cols="60">{{wants_to_view}}</textarea>
-</p>
 
 <input type="hidden" name="redirect_to" value="{{redirect_to}}">
 
