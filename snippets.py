@@ -24,7 +24,7 @@ other people's snippets.  They will also get weekly mail with
 everyone's snippets in them.
 """
 
-__author__ = 'Craig Silverstein <csilvers@khanacademy.org>'
+__author__ = 'Craig Silverstein <csilvers@khanacademy.org> modified for Macaulay by Joe Ugoretz <joseph.ugoretz@mhc.cuny.edu>'
 
 
 # Have the cron jobs send to HipChat in addition to email?
@@ -527,8 +527,8 @@ def _get_email_to_current_snippet_map(today):
 
 
 def _send_snippets_mail(to, subject, template_path, template_values):
-    mail.send_mail(sender=('Khan Academy Snippet Server'
-                           ' <csilvers+snippets@khanacademy.org>'),
+    mail.send_mail(sender=('Macaulay Snippets'
+                           ' <joseph.ugoretz@mhc.cuny.edu>'),
                    to=to,
                    subject=subject,
                    body=template.render(template_path, template_values))
@@ -551,9 +551,9 @@ class SendReminderEmail(webapp.RequestHandler):
     def _send_to_hipchat(self):
         """Sends a note to the main hipchat room."""
         msg = ('Reminder: Weekly snippets due today at 5pm. '
-               '<a href="http://weekly-snippets.appspot.com/">'
-               'http://weekly-snippets.appspot.com/</a>')
-        hipchatlib.send_to_hipchat_room('Khan Academy', msg)
+               '<a href="http://macaulay-snippets.appspot.com/">'
+               'http://macaulay-snippets.appspot.com/</a>')
+        hipchatlib.send_to_hipchat_room('Macaulay Honors College', msg)
 
     def get(self):
         email_to_has_snippet = _get_email_to_current_snippet_map(_TODAY_FN())
@@ -581,9 +581,9 @@ class SendViewEmail(webapp.RequestHandler):
     def _send_to_hipchat(self):
         """Sends a note to the main hipchat room."""
         msg = ('Weekly snippets are ready! '
-               '<a href="http://weekly-snippets.appspot.com/weekly">'
-               'http://weekly-snippets.appspot.com/weekly</a>')
-        hipchatlib.send_to_hipchat_room('Khan Academy', msg)
+               '<a href="http://macaulay-snippets.appspot.com/weekly">'
+               'http://macaulay-snippets.appspot.com/weekly</a>')
+        hipchatlib.send_to_hipchat_room('Macaulay Honors College', msg)
 
     def get(self):
         email_to_has_snippet = _get_email_to_current_snippet_map(_TODAY_FN())
