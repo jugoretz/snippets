@@ -18,7 +18,7 @@ from google.appengine.ext import db
 
 """Snippets server.
 
-This server runs the Khan Academy weekly snippets.  Users can
+This server runs the Macaulay Honors College weekly snippets.  Users can
 add a summary of what they did in the last week, and browse
 other people's snippets.  They will also get weekly mail with
 everyone's snippets in them.
