@@ -28,7 +28,7 @@ __author__ = 'Craig Silverstein <csilvers@khanacademy.org> modified for Macaulay
 
 
 # Have the cron jobs send to HipChat in addition to email?
-_SEND_TO_HIPCHAT = False
+_SEND_TO_HIPCHAT = True
 
 if _SEND_TO_HIPCHAT:
     import hipchatlib
@@ -528,7 +528,7 @@ def _get_email_to_current_snippet_map(today):
 
 def _send_snippets_mail(to, subject, template_path, template_values):
     mail.send_mail(sender=('Macaulay Snippets'
-                           ' <joseph.ugoretz@macaulay.cuny.edu>'),
+                           ' <joseph.ugoretz@mhc.cuny.edu>'),
                    to=to,
                    subject=subject,
                    body=template.render(template_path, template_values))
