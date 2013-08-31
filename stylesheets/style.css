@@ -1,8 +1,90 @@
+@import url("http://fonts.googleapis.com/css?family=Gilda+Display");
+
 .snippet pre {
- white-space: pre-wrap;       /* css-3 */
+ white-space: pre-wrap;       /* css-3 ALL THIS IS JUST TO MAKE THE TEXT WRAP AND RESPECT LINEBREAKS */
  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
  white-space: -pre-wrap;      /* Opera 4-6 */
  white-space: -o-pre-wrap;    /* Opera 7 */
  word-wrap: break-word;       /* Internet Explorer 5.5+ */
  font-family: verdana sans-serif;
+}
+
+body {
+ max-width: 800px;
+ margin: 20px auto 0 auto;  
+ padding: 0px 10px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Gilda Display","Georgia","Times New Roman",serif;
+  text-transform: lowercase;
+  color: #303030;
+  font-weight: 100;
+}
+
+h2{
+ text-align:center;
+}
+
+h3{
+ text-indent:10px;
+ margin-top: 35px;
+}
+
+a {
+ color: #FF2400;
+ text-decoration: none;
+}
+
+.head {
+ height: 59px;
+ margin-bottom: 40px;
+ text-align: right;
+}
+
+.head img {
+	float:left;
+}
+
+form {
+	clear: both;
+}
+.snippet {
+ font-family: Helvetica, Arial, sans-serif;
+ line-height: 25px;
+ padding: 10px 20px;
+ margin-bottom: 20px;
+ background-color:
+		/* IE10 Consumer Preview */ 
+		background-image: -ms-radial-gradient(center, ellipse farthest-corner, #FFFFFF 0%, #F0F0F0 100%);
+		
+		/* Mozilla Firefox */ 
+		background-image: -moz-radial-gradient(center, ellipse farthest-corner, #FFFFFF 0%, #F0F0F0 100%);
+		
+		/* Opera */ 
+		background-image: -o-radial-gradient(center, ellipse farthest-corner, #FFFFFF 0%, #F0F0F0 100%);
+		
+		/* Webkit (Safari/Chrome 10) */ 
+		background-image: -webkit-gradient(radial, center center, 0, center center, 497, color-stop(0, #FFFFFF), color-stop(1, #F0F0F0));
+		
+		/* Webkit (Chrome 11+) */ 
+		background-image: -webkit-radial-gradient(center, ellipse farthest-corner, #FFFFFF 0%, #F0F0F0 100%);
+		
+		/* W3C Markup, IE10 Release Preview */ 
+		background-image: radial-gradient(ellipse farthest-corner at center, #FFFFFF 0%, #F0F0F0 100%);
+
+ -webkit-box-shadow: 0px 1px 10px rgba(50, 50, 50, 0.59);
+ -moz-box-shadow:    0px 1px 10px rgba(50, 50, 50, 0.59);
+ box-shadow:         0px 1px 10px rgba(50, 50, 50, 0.59);
+}
+
+.snippet p {
+	font-size: 18px;
+	font-weight: bold;
+	font-style:italic;
+}
+
+.snippet pre {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 15px;
 }
