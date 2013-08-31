@@ -553,7 +553,7 @@ class SendReminderEmail(webapp.RequestHandler):
         msg = ('Reminder: Weekly snippets due today at 5pm. '
                '<a href="http://macaulay-snippets.appspot.com/">'
                'http://macaulay-snippets.appspot.com/</a>')
-        hipchatlib.send_to_hipchat_room('Macaulay Honors College', msg)
+        
 
     def get(self):
         email_to_has_snippet = _get_email_to_current_snippet_map(_TODAY_FN())
@@ -565,8 +565,7 @@ class SendReminderEmail(webapp.RequestHandler):
                 logging.debug('did not send reminder email to %s: '
                               'has a snippet already' % user_email)
 
-        if _SEND_TO_HIPCHAT:
-            self._send_to_hipchat()
+    
 
 
 class SendViewEmail(webapp.RequestHandler):
