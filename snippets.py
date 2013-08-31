@@ -528,7 +528,7 @@ def _get_email_to_current_snippet_map(today):
 
 def _send_snippets_mail(to, subject, template_path, template_values):
     mail.send_mail(sender=('Macaulay Snippets'
-                           ' <joseph.ugoretz@mhc.cuny.edu>'),
+                           ' <joseph.ugoretz@macaulay.cuny.edu>'),
                    to=to,
                    subject=subject,
                    body=template.render(template_path, template_values))
