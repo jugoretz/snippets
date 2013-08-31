@@ -2,8 +2,13 @@ cron:
 
 - description: snippets email -- reminder to write snippets
   url: /admin/send_reminder_email
+<<<<<<< HEAD
   schedule: every saturday 15:05
   timezone: US/Eastern
+=======
+  schedule: every sunday 23:50
+  timezone: US/Pacific
+>>>>>>> parent of 59cd38b... temp change to sending time
 
 - description: snippets email -- notification that snippets are ready to view
   url: /admin/send_view_email
