@@ -58,6 +58,8 @@ class User(db.Model):
     email = db.StringProperty(required=True)           # The key to this record
     category = db.StringProperty(default='(unknown)')  # used to group snippets
     wants_email = db.BooleanProperty(default=True)     # get nag emails?
+    real_name = db.StringProperty(required=True)        #Enter a real name for display purposes
+    prefer_email = db.StringProperty(required=True)     #an email in case people would rather not use their gmail
     # TODO(csilvers): make a ListProperty instead.
     wants_to_view = db.TextProperty(default='all')     # comma-separated list
 
@@ -78,6 +80,14 @@ def _login_page(request, redirector):
 def _current_user_email():
     """Return the logged-in user's email address, converted into lowercase."""
     return users.get_current_user().email().lower()
+    
+def _current_user_name():
+    """Return the logged-in user's real name."""
+    return users.get_current_user().real_name()
+    
+def _current_user_prefer()
+    """Return the logged-in user's preferred email address for sending. """
+    return users.get_current_user().prefer_email()
 
 
 def _get_user(email):
