@@ -102,7 +102,9 @@ def _get_or_create_user(email):
         db.get(user.key())    # ensure db consistency for HRD
     return user
 
-
+def _current_user_realname():
+	"""Return the users name"""
+	return users.get_current_user().realname()
 
 def _newsnippet_monday(today):
     """Return a datetime.date object: the monday for new snippets.
