@@ -237,7 +237,7 @@ class UserPage(webapp.RequestHandler):
                 'login_url': users.create_login_url(self.request.uri),
                 'logout_url': users.create_logout_url('/'),
                 'username': user_email,
-                'realname': user_realname,
+                'realname': user.realname,
                 }
             path = os.path.join(os.path.dirname(__file__), 'new_user.html')
             self.response.out.write(template.render(path, template_values))
@@ -257,6 +257,7 @@ class UserPage(webapp.RequestHandler):
             'logout_url': users.create_logout_url('/'),
             'message': self.request.get('msg'),
             'username': user_email,
+            'realname': user.realname,
             'domain': user_email.split('@')[-1],
             'view_week': _existingsnippet_monday(_TODAY_FN()),
             'editable': _logged_in_user_has_permission_for(user_email),
