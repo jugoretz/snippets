@@ -465,8 +465,6 @@ class UpdateSettings(webapp.RequestHandler):
         category = self.request.get('category')
 
         wants_email = self.request.get('reminder_email') == 'yes'
-        
-        realname = self.request.get('realname')
 
         # We want this list to be comma-separated, but people are
         # likely to use both commas and newlines to separate.  Convert
