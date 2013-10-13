@@ -102,6 +102,9 @@ def _get_or_create_user(email):
         db.get(user.key())    # ensure db consistency for HRD
     return user
 
+def _current_user_realname():
+	"""Return the users name"""
+	return users.get_current_user().realname()
 
 def _newsnippet_monday(today):
     """Return a datetime.date object: the monday for new snippets.
@@ -236,6 +239,7 @@ class UserPage(webapp.RequestHandler):
                 'login_url': users.create_login_url(self.request.uri),
                 'logout_url': users.create_logout_url('/'),
                 'username': user_email,
+                'realname': user_realname,
                 }
             path = os.path.join(os.path.dirname(__file__), 'new_user.html')
             self.response.out.write(template.render(path, template_values))
@@ -255,6 +259,7 @@ class UserPage(webapp.RequestHandler):
             'logout_url': users.create_logout_url('/'),
             'message': self.request.get('msg'),
             'username': user_email,
+            'realname': user_realname,
             'domain': user_email.split('@')[-1],
             'view_week': _existingsnippet_monday(_TODAY_FN()),
             'editable': _logged_in_user_has_permission_for(user_email),
@@ -325,6 +330,7 @@ class SummaryPage(webapp.RequestHandler):
             'message': self.request.get('msg'),
             # Used only to switch to 'username' mode and to modify settings.
             'username': _current_user_email(),
+            'realname': _current_user_realname(),
             'prev_week': week - datetime.timedelta(7),
             'view_week': week,
             'next_week': week + datetime.timedelta(7),
@@ -437,6 +443,7 @@ class Settings(webapp.RequestHandler):
             'logout_url': users.create_logout_url('/'),
             'message': self.request.get('msg'),
             'username': user.email,
+            'realname':user.realname,
             'view_week': _existingsnippet_monday(_TODAY_FN()),
             'user': user,
             'redirect_to': self.request.get('redirect_to', ''),
