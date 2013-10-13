@@ -462,6 +462,8 @@ class UpdateSettings(webapp.RequestHandler):
         user = _get_or_create_user(user_email)
 
         category = self.request.get('category')
+        
+        realname = self.request.get('realname')
 
         wants_email = self.request.get('reminder_email') == 'yes'
 
@@ -472,6 +474,7 @@ class UpdateSettings(webapp.RequestHandler):
         wants_to_view = wants_to_view.replace(' ', '')
 
         user.category = category or '(unknown)'
+        user.realname = realname or '(no name entered)'
         user.wants_email = wants_email
         user.wants_to_view = wants_to_view
         db.put(user)
