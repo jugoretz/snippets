@@ -86,7 +86,12 @@ def _get_user(email):
     q = User.all()
     q.filter('email = ', email)
     return q.get()
-
+    
+def _get_user(realname):
+    """Return the user object with the given realname, or None if not found."""
+    q = User.all()
+    q.filter('realname = ', realname)
+    return q.get()
 
 def _get_or_create_user(email):
     """Return the user object with the given email, creating if if needed."""
