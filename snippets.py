@@ -104,10 +104,6 @@ def _get_or_create_user(email):
         db.get(user.key())    # ensure db consistency for HRD
     return user
 
-def _current_user_realname():
-	"""Return the users name"""
-	return users.get_current_user().realname()
-
 def _newsnippet_monday(today):
     """Return a datetime.date object: the monday for new snippets.
 
@@ -332,7 +328,6 @@ class SummaryPage(webapp.RequestHandler):
             'message': self.request.get('msg'),
             # Used only to switch to 'username' mode and to modify settings.
             'username': _current_user_email(),
-            'realname': _current_user_realname(),
             'prev_week': week - datetime.timedelta(7),
             'view_week': week,
             'next_week': week + datetime.timedelta(7),
