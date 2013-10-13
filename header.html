@@ -7,8 +7,9 @@
 {% if message %}
 <font color="red" size="+2"><b>{{message}}</b></font><br><br>
 {% endif %}
-<i><a href="macaulay-snippets.appspot.com/weekly">See last week's snippets from everybody</a>
-  </i>
+<p>
+<i><a href="weekly">See last week's snippets from everybody</a>
+  </i></p>
 <form action="/weekly" method="get">
   <i>See snippets for the week of
   <input type="textbox" size="10" name="week" value="{{view_week|date:"m-d-Y"}}">
