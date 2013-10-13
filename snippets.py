@@ -56,6 +56,7 @@ _TODAY_FN = datetime.datetime.now
 class User(db.Model):
     """User preferences."""
     email = db.StringProperty(required=True)           # The key to this record
+    realname = db.StringProperty(default='(your name)') # trying a real name
     category = db.StringProperty(default='(unknown)')  # used to group snippets
     wants_email = db.BooleanProperty(default=True)     # get nag emails?
     # TODO(csilvers): make a ListProperty instead.
