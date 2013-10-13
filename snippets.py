@@ -28,7 +28,7 @@ __author__ = 'Craig Silverstein <csilvers@khanacademy.org> modified for Macaulay
 
 
 # Have the cron jobs send to HipChat in addition to email?
-_SEND_TO_HIPCHAT = True
+_SEND_TO_HIPCHAT = False
 
 if _SEND_TO_HIPCHAT:
     import hipchatlib
