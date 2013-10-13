@@ -7,7 +7,7 @@
 
 {% include "header.html" %}
 
-<h2>User settings for {{username}}</h2>
+<h2>User settings for {{username}} ({{realname}})</h2>
 
 <form action="/update_settings" method="get">
 
@@ -17,6 +17,9 @@
 
 <p><b>Category:</b>
 <input type="textbox" name="category" value="{{user.category}}">
+</p>
+<p><b>Real Name:</b>
+<input type="textbox" name="realname" value="{{user.realname}}">
 </p>
 
 <p><b>Receive reminder emails?:</b>
