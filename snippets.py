@@ -237,6 +237,7 @@ class UserPage(webapp.RequestHandler):
                 'login_url': users.create_login_url(self.request.uri),
                 'logout_url': users.create_logout_url('/'),
                 'username': user_email,
+                'realname': self.request.get('realname'),
                 }
             path = os.path.join(os.path.dirname(__file__), 'new_user.html')
             self.response.out.write(template.render(path, template_values))
