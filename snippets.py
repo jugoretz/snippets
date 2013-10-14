@@ -66,6 +66,7 @@ class User(db.Model):
 class Snippet(db.Model):
     """Every snippet is identified by the monday of the week it goes with."""
     email = db.StringProperty(required=True)  # week+email: key to this record
+    realname = db.StringProperty(default='(your name)') # trying to get a real name
     week = db.DateProperty(required=True)     # the monday of the week
     text = db.TextProperty(default='(No snippet for this week)')
     private = db.BooleanProperty(default=False)
