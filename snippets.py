@@ -334,7 +334,6 @@ class SummaryPage(webapp.RequestHandler):
             'message': self.request.get('msg'),
             # Used only to switch to 'username' mode and to modify settings.
             'username': _current_user_email(),
-            'realname': result.realname,
             'prev_week': week - datetime.timedelta(7),
             'view_week': week,
             'next_week': week + datetime.timedelta(7),
