@@ -20,7 +20,7 @@ Snippets for the week of {{view_week|date:"F j, Y"}}
 
     {% for snippet in category_and_snippets.1 %}
       <div class="snippet">
-      <p>{{snippet.category}}:</p>
+      <p>{{snippet.email}}:</p>
       {% if snippet.private %}<font color="#888888">{% endif %}
       <p><pre>{{snippet.text}}</pre></p>
       {% if snippet.private %}</font>{% endif %}
