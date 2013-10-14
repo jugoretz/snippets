@@ -79,7 +79,9 @@ def _login_page(request, redirector):
 def _current_user_email():
     """Return the logged-in user's email address, converted into lowercase."""
     return users.get_current_user().email().lower()
-
+    
+def _current_user_realname():
+	return users.get_current_user().realname()
 
 def _get_user(email):
     """Return the user object with the given email, or None if not found."""
