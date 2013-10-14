@@ -7,7 +7,7 @@
 {% if message %}
 <font color="red" size="+2"><b>{{message}}</b></font><br><br>
 {% endif %}
-
+<p><a href="weekly">View last week's snippets for everybody</a></p>
 <form action="/weekly" method="get">
   <i>See snippets for the week of
   <input type="textbox" size="10" name="week" value="{{view_week|date:"m-d-Y"}}">
