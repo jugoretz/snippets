@@ -56,7 +56,6 @@ _TODAY_FN = datetime.datetime.now
 class User(db.Model):
     """User preferences."""
     email = db.StringProperty(required=True)           # The key to this record
-    realname = db.StringProperty(default='(your name)') # trying to get a real name
     category = db.StringProperty(default='(unknown)')  # used to group snippets
     wants_email = db.BooleanProperty(default=True)     # get nag emails?
     # TODO(csilvers): make a ListProperty instead.
@@ -66,7 +65,6 @@ class User(db.Model):
 class Snippet(db.Model):
     """Every snippet is identified by the monday of the week it goes with."""
     email = db.StringProperty(required=True)  # week+email: key to this record
-    realname = db.StringProperty(default='(your name)') # trying to get a real name
     week = db.DateProperty(required=True)     # the monday of the week
     text = db.TextProperty(default='(No snippet for this week)')
     private = db.BooleanProperty(default=False)
@@ -81,13 +79,12 @@ def _current_user_email():
     """Return the logged-in user's email address, converted into lowercase."""
     return users.get_current_user().email().lower()
 
+
 def _get_user(email):
     """Return the user object with the given email, or None if not found."""
     q = User.all()
     q.filter('email = ', email)
     return q.get()
-    
-
 
 
 def _get_or_create_user(email):
@@ -103,6 +100,7 @@ def _get_or_create_user(email):
         db.put(user)
         db.get(user.key())    # ensure db consistency for HRD
     return user
+
 
 def _newsnippet_monday(today):
     """Return a datetime.date object: the monday for new snippets.
@@ -231,7 +229,6 @@ class UserPage(webapp.RequestHandler):
             return _login_page(self.request, self)
 
         user_email = self.request.get('u', _current_user_email())
-        
 
         if not _get_user(user_email):
             template_values = {
@@ -257,7 +254,6 @@ class UserPage(webapp.RequestHandler):
             'logout_url': users.create_logout_url('/'),
             'message': self.request.get('msg'),
             'username': user_email,
-            'realname': user_realname,
             'domain': user_email.split('@')[-1],
             'view_week': _existingsnippet_monday(_TODAY_FN()),
             'editable': _logged_in_user_has_permission_for(user_email),
@@ -291,13 +287,6 @@ class SummaryPage(webapp.RequestHandler):
         email_to_category = {}
         for result in results:
             email_to_category[result.email] = result.category
-        
-        user_q = User.all()
-        results = user_q.fetch(1000)
-        email_to_realname = {}
-        for result in results:
-        	email_to_realname[result.email] = result.realname    
-        
 
         # Collect the snippets by category.  As we see each email,
         # delete it from email_to_category.  At the end of this,
@@ -447,7 +436,6 @@ class Settings(webapp.RequestHandler):
             'logout_url': users.create_logout_url('/'),
             'message': self.request.get('msg'),
             'username': user.email,
-            'realname':user.realname,
             'view_week': _existingsnippet_monday(_TODAY_FN()),
             'user': user,
             'redirect_to': self.request.get('redirect_to', ''),
@@ -474,8 +462,6 @@ class UpdateSettings(webapp.RequestHandler):
         user = _get_or_create_user(user_email)
 
         category = self.request.get('category')
-        
-        realname = self.request.get('realname')
 
         wants_email = self.request.get('reminder_email') == 'yes'
 
@@ -486,7 +472,6 @@ class UpdateSettings(webapp.RequestHandler):
         wants_to_view = wants_to_view.replace(' ', '')
 
         user.category = category or '(unknown)'
-        user.realname = realname or '(no name entered)'
         user.wants_email = wants_email
         user.wants_to_view = wants_to_view
         db.put(user)
