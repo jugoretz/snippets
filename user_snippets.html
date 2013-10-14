@@ -10,10 +10,7 @@
 
 <h2>Snippets for {{username}}</h2>
 
-{% for category_and_snippets in categories_and_snippets %}
-
-  <h3> {{category_and_snippets.0}} </h3>
-
+{% for snippet in snippets %}
   <div class="snippet">
   {% if editable %}
     <form action="/update_snippet" method="get">
