@@ -295,7 +295,7 @@ class SummaryPage(webapp.RequestHandler):
         results = user_q.fetch(1000)
         email_to_realname = {}
         for result in results:
-        	email_to_category[result.email] = result.realname    
+        	email_to_realname[result.email] = result.realname    
         
 
         # Collect the snippets by category.  As we see each email,
