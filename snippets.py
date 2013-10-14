@@ -230,7 +230,7 @@ class UserPage(webapp.RequestHandler):
             return _login_page(self.request, self)
 
         user_email = self.request.get('u', _current_user_email())
-        user_realname = self.request.get('u', _current_user_realname())
+        
 
         if not _get_user(user_email):
             template_values = {
