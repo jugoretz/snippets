@@ -290,6 +290,13 @@ class SummaryPage(webapp.RequestHandler):
         email_to_category = {}
         for result in results:
             email_to_category[result.email] = result.category
+        
+        user_q = User.all()
+        results = user_q.fetch(1000)
+        email_to_realname = {}
+        for result in results:
+        	email_to_category[result.email] = result.realname    
+        
 
         # Collect the snippets by category.  As we see each email,
         # delete it from email_to_category.  At the end of this,
@@ -327,6 +334,7 @@ class SummaryPage(webapp.RequestHandler):
             'message': self.request.get('msg'),
             # Used only to switch to 'username' mode and to modify settings.
             'username': _current_user_email(),
+            'realname': result.realname,
             'prev_week': week - datetime.timedelta(7),
             'view_week': week,
             'next_week': week + datetime.timedelta(7),
