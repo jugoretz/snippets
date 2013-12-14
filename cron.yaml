@@ -2,10 +2,10 @@ cron:
 
 - description: snippets email -- reminder to write snippets
   url: /admin/send_reminder_email
-  schedule: every friday 13:30
+  schedule: every monday 10:00
   timezone: US/Eastern
 
 - description: snippets email -- notification that snippets are ready to view
   url: /admin/send_view_email
-  schedule: every monday 10:00
+  schedule: every monday 19:00
   timezone: US/Eastern
